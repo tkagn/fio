@@ -6,7 +6,8 @@ iodepth=1
 runtime=60
 time_based
 direct=1
-directory='/mnt/sdd1/fiotests/'
+directory=/mnt/sdd1/fiotests/
+size=1Gi
 
 [write-random.io-4k-para]
 bs=4k

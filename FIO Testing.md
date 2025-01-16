@@ -8,10 +8,11 @@ dnf install fio
 
 ## FIO 
 
+## Tests
+
 Random Write Test for IOP/s
 
-`
-sync; fio --randrepeat=1 --ioengine=libaio --direct=1 --name=test --filename=test --bs=4k --size=1G --readwrite=randwrite --ramp_time=4`
+`sync; fio --randrepeat=1 --ioengine=libaio --direct=1 --name=test --filename=test --bs=4k --size=1G --readwrite=randwrite --ramp_time=4`
 
 Random Read Test for IOP/s
 
@@ -28,15 +29,30 @@ Sequential Read Test for Throughput
 
 sync;fio --randrepeat=1 --ioengine=libaio --direct=1 --name=4K --filename=/mnt/rbd/1G.file --bs=4K --size=1G --readwrite=write --ramp_time=4 -numjobs=1
 
+**Simple Latency Test**
+`fio --name=test-latency --filename=/dev/sdX --ioengine=libaio --direct=1 --rw=randread --bs=4k --iodepth=1 --runtime=60 --time_based`
+
+**Simple Bandwidth Test**
+
+`fio --name=throughput-test --filename=/dev/sdX --ioengine=libaio --direct=1 --rw=write --bs=1M --iodepth=32 --numjobs=4 --runtime=60 --time_based --group_reporting`
+
+**Simple IOPS Test**
+
+`fio --name=iops-test --filename=/dev/sdX --ioengine=libaio --direct=1 --rw=randread --bs=4k --iodepth=32 --numjobs=4 --runtime=60 --time_based --group_reporting`
+
+
+---
+
+
 ## Regular tools
 
 sync; dd if=./1G.file of=/mnt/rbd/dd-tests/1G.file bs=4K status=progress
 
 fallocate -l 1G 1G.file && sync; dd if=./1G.file of=<device> bs=<4K, 64K, 128K, 1MB, 4M> status=progress && sync
 
+---
 
-
-Results from some slow systems:
+## Results from some slow systems:
 
 4K - 1073741824 bytes (1.1 GB) copied, 44.3478 s, 24.2 MB/s
 64K - 1073741824 bytes (1.1 GB) copied, 25.8326 s, 41.6 MB/s

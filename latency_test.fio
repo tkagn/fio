@@ -1,0 +1,12 @@
+[global]
+ioengine=libaio      # Use asynchronous I/O
+direct=1             # Bypass page cache
+runtime=60           # Run the test for 60 seconds
+time_based=1         # Stop based on time
+filename=/dev/sdX    # Replace with your device or file
+numjobs=1            # Number of jobs (1 for latency tests)
+
+[test-latency]
+rw=randread          # Random reads
+blocksize=4k         # Block size of 4 KB
+iodepth=1            # Queue depth of 1 to measure latency accurately

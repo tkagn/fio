@@ -1,0 +1,13 @@
+[global]
+ioengine=libaio      # Use asynchronous I/O
+direct=1             # Bypass the page cache
+runtime=60           # Run the test for 60 seconds
+time_based=1         # Stop based on time
+filename=/dev/sdX    # Replace with your device or file
+numjobs=4            # Number of parallel jobs
+group_reporting=1    # Combine results for all jobs
+
+[throughput-read]
+rw=read              # Sequential read (use 'write' for sequential write)
+bs=1M                # Block size of 1 MB
+iodepth=32           # Queue depth of 32

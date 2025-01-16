@@ -1,0 +1,13 @@
+[global]
+ioengine=libaio      # Asynchronous I/O
+direct=1             # Bypass page cache
+time_based=1         # Stop based on runtime
+runtime=60           # Run test for 60 seconds
+filename=/dev/sdX    # Replace with the target device or file
+group_reporting=1    # Combine results for all jobs
+
+[test-iops]
+rw=randread          # Random reads (use 'randwrite' for writes)
+bs=4k                # Block size of 4 KB
+iodepth=32           # Queue depth of 32
+numjobs=4            # Run 4 parallel jobs

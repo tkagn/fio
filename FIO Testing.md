@@ -10,22 +10,22 @@ dnf install fio
 
 ## Tests
 
-Random Write Test for IOP/s
+**Random Write Test for IOP/s**
 
 `sync; fio --randrepeat=1 --ioengine=libaio --direct=1 --name=test --filename=test --bs=4k --size=1G --readwrite=randwrite --ramp_time=4`
 
-Random Read Test for IOP/s
+**Random Read Test for IOP/s**
 
 `sync; fio --randrepeat=1 --ioengine=libaio --direct=1 --name=test --filename=test --bs=4k --size=1G --readwrite=randread --ramp_time=4`
 
-Mixed Random Workload
+**Mixed Random Workload**
 `sync; fio --randrepeat=1 --ioengine=libaio --direct=1 --name=test --filename=test --bs=4k --size=1G --readwrite=readwrite --ramp_time=4`
 
-Sequential Write Test for Throughput
+**Sequential Write Test for Throughput**
 
 `sync; fio --randrepeat=1 --ioengine=libaio --direct=1 --name=test --filename=test --bs=4M --size=1G --readwrite=write --ramp_time=4 `
 
-Sequential Read Test for Throughput
+**Sequential Read Test for Throughput**
 
 sync;fio --randrepeat=1 --ioengine=libaio --direct=1 --name=4K --filename=/mnt/rbd/1G.file --bs=4K --size=1G --readwrite=write --ramp_time=4 -numjobs=1
 
